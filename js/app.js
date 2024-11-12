@@ -127,3 +127,23 @@ document.getElementById('proceedCheckout').addEventListener('click', () => {
 document.getElementById('viewCart').addEventListener('click', () => {
     window.location.href = 'cart.html';
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".p-card");
+
+  const observer = new IntersectionObserver(
+      (entries) => {
+          entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add("scrolled");
+                  observer.unobserve(entry.target);
+              }
+          });
+      },
+      { threshold: 0.5 }
+  );
+
+  cards.forEach((card) => {
+      observer.observe(card);
+  });
+});
