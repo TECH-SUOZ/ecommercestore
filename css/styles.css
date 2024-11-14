@@ -118,7 +118,12 @@ ul {
 .nav {
   width: 100%;
   height: 8rem;
-  border-bottom: 1px solid var(--colo-dark-2);
+  border-radius: 8px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.1),
+    0 16px 32px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
 }
 
 .nav_container {
@@ -149,6 +154,10 @@ ul {
   letter-spacing: 6px;
 }
 
+.nav_logo:hover{
+  color: #00d656;
+}
+
 .nav_item {
   margin: 0rem 0.5rem;
 }
@@ -163,6 +172,7 @@ ul {
   background-color: var(--colo-white-2);
   display: flex;
   align-items: center;
+  border-radius: 10px;
 }
 
 .nav_input {
@@ -184,6 +194,10 @@ ul {
 .nav_heart {
   margin-left: 1rem;
   cursor: pointer;
+}
+
+.nav_heart :hover{
+  background-color: red;
 }
 
 .nav_cart {
@@ -390,7 +404,7 @@ ul {
   font-family: var(--font-small);
 }
 
-.cad{
+.cad {
   text-decoration: line-through;
   font-size: small;
 }
@@ -406,7 +420,7 @@ ul {
   margin-right: 1rem;
 }
 
-.card button{
+.card button {
   margin: 0 auto;
 }
 
@@ -694,8 +708,16 @@ ul {
   position: absolute;
   z-index: 99;
   height: 100vh;
-  border-right: 1px solid var(--colo-dark-2);
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),  /* Subtle inner shadow */
+    0 8px 16px rgba(0, 0, 0, 0.1), /* Larger outer shadow */
+    0 16px 32px rgba(0, 0, 0, 0.05); 
   transition: all 0.5s ease;
+}
+
+.mobile_nav .span {
+  margin-left: 5px;
 }
 
 .mobile_nav_item {
@@ -711,6 +733,8 @@ ul {
 .mobile_nav_hide {
   display: none;
 }
+
+
 
 /* Cart page */
 .cart {
@@ -926,17 +950,18 @@ ul {
     font-size: 12px;
   }
 
-  .card{
+  .card {
     width: 160px;
     /* background-color: #00d656; */
   }
+
   .card:hover {
     transform: scalex(1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     transition: transform 0.5s ease-in-out;
   }
-  
+
   .card_top {
     width: 100%;
     height: 100%;
@@ -944,35 +969,35 @@ ul {
     padding: 15px;
   }
 
-  
+
   .card_tag {
     padding: 0.2rem 0.5rem;
     font-size: 8.5px;
     font-weight: 500;
   }
-  
+
   .card_body {
     margin-top: 1rem;
     text-align: left;
     text-align: center;
     padding: 14px;
   }
-  
+
   .card_title {
     font-size: 1.3rem;
   }
-  
+
   .card_price {
     color: var(--colo-primary);
     margin-bottom: 1rem;
     font-size: smaller;
   }
-  
-  .cad{
+
+  .cad {
     text-decoration: line-through;
     font-size: small;
   }
-  
+
   .card_ratings {
     font-size: 1.4rem;
     display: flex;
@@ -981,21 +1006,22 @@ ul {
     width: 145px;
     font-family: var(--font-main);
   }
-  
+
   .card_stars {
     transform: scale(.71);
   }
-  
-  .card button{
+
+  .card button {
     width: 130px;
   }
-  
+
   .container_btn {
     width: 100%;
     text-align: center;
+  }
 }
-}
-.cart_delete{
+
+.cart_delete {
   cursor: pointer;
   padding: .51rem 2rem;
   border-radius: 0.5rem;
@@ -1016,13 +1042,15 @@ ul {
 
 /* Basic popup styling */
 .cart-popup {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Semi-transparent background */
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -1095,10 +1123,11 @@ ul {
 /* Animation for popup appearance */
 @keyframes fadeIn {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
+
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
@@ -1258,14 +1287,15 @@ ul {
 
 @media (max-width: 436px) {
   .p-card {
-      width: 100%;
+    width: 100%;
   }
 }
 
 /* Style for the floating notification */
 .floating-notification {
   position: fixed;
-  bottom: 20px; /* Or use top: 20px for top position */
+  bottom: 20px;
+  /* Or use top: 20px for top position */
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
@@ -1314,12 +1344,13 @@ ul {
 /* Slide-in animation */
 @keyframes slideIn {
   0% {
-      transform: translateX(-50%) translateY(100%);
-      opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
   }
+
   100% {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
 }
 
