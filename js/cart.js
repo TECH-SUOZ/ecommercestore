@@ -21,13 +21,13 @@ function refreshCart() {
                 <img class="cart-item-image" src="${product.image}" alt="${product.name}">
                 <div class="cart-item-details">  <!-- Added class for item details -->
                     <span class="cart-item-name">${index + 1}. ${product.name}</span>  <!-- Product name -->
-                    <span class="cart-item-price">$${product.price.toFixed(2)}</span>
+                    <span class="cart-item-price">₦${product.price.toFixed(2)}</span>
                     <div class="cart-item-quantity">
                         <button class="minus-button" data-name="${product.name}">-</button>
                         <span class="cart-item-quantity-number">${product.quantity}</span>
                         <button class="plus-button" data-name="${product.name}">+</button>
                     </div>
-                    <span class="cart-item-total">= $${itemTotal.toFixed(2)}</span>
+                    <span class="cart-item-total">= ₦${itemTotal.toFixed(2)}</span>
                 </div>
             </div>
             <button class="remove-product" data-name="${product.name}">Remove</button>

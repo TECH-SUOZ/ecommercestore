@@ -828,12 +828,16 @@ ul {
 }
 
 @media only screen and (max-width: 800px) {
+
+
   .auth_img {
-    display: none;
+    display: flex;
+    flex: 100%;
   }
 
   .auth_content {
     width: 100%;
+    position: absolute;
   }
 
   .flash {
@@ -1252,8 +1256,88 @@ ul {
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 436px) {
   .p-card {
       width: 100%;
   }
+}
+
+/* Style for the floating notification */
+.floating-notification {
+  position: fixed;
+  bottom: 20px; /* Or use top: 20px for top position */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  animation: slideIn 0.5s ease-in-out;
+  z-index: 9999;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+}
+
+.notification-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.notification-info {
+  max-width: 200px;
+}
+
+.notification-title {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  color: #333;
+}
+
+.notification-price {
+  font-size: 1rem;
+  color: #1dbf73;
+  margin: 5px 0;
+}
+
+.notification-message {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+  0% {
+      transform: translateX(-50%) translateY(100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Style for cart item count badge */
+#cart-item-count {
+  background-color: #f30000;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  margin-left: -15px;
+  position: relative;
+  top: -5px;
+  right: -5px;
+  transition: transform 0.3s ease;
+}
+
+/* Animation for badge increment */
+#cart-item-count.increment-animation {
+  transform: scale(1.3);
 }

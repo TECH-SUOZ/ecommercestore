@@ -93,6 +93,7 @@ hamburger.addEventListener("click", () => {
 
 
 
+// Load cart items from localStorage
 const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
 // Function to add product to cart
@@ -104,6 +105,39 @@ function addToCart(name, price, image) {
         cartItems.push({ name, price: parseFloat(price), quantity: 1, image });
     }
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCartItemCount();  // Update the cart item count on the icon
+    showFloatingNotification(name, price, image);  // Show floating notification after adding to cart
+}
+
+// Function to update the cart item count on the cart icon
+function updateCartItemCount() {
+    const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const cartBadge = document.getElementById('cart-item-count'); // Add ID 'cart-item-count' to the cart icon in your HTML
+    if (cartBadge) {
+        cartBadge.textContent = cartItemCount;  // Update the text content of the badge
+    }
+}
+
+// Function to show floating notification
+function showFloatingNotification(name, price, image) {
+    const notification = document.createElement('div');
+    notification.classList.add('floating-notification');
+    notification.innerHTML = `
+        <div class="notification-content">
+            <img class="notification-image" src="${image}" alt="${name}" />
+            <div class="notification-info">
+                <h3 class="notification-title">${name}</h3>
+                <p class="notification-price">₦${parseFloat(price).toFixed(2)}</p>
+                <p class="notification-message">Added to cart!</p>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(notification);
+
+    // Automatically remove the notification after 3 seconds
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
 }
 
 // Event listener for adding products to cart
@@ -114,36 +148,13 @@ document.querySelectorAll('.add-product').forEach(button => {
         const price = productElement.getAttribute('data-price');
         const image = productElement.getAttribute('data-image');
         addToCart(name, price, image);
-        alert(`${name} added to cart!`);
     });
 });
 
-// Redirect to checkout page
-document.getElementById('proceedCheckout').addEventListener('click', () => {
-    window.location.href = 'cart.html';
-});
-
 // Redirect to cart page
-document.getElementById('viewCart').addEventListener('click', () => {
+document.getElementById('viewCart')?.addEventListener('click', () => {
     window.location.href = 'cart.html';
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const cards = document.querySelectorAll(".p-card");
-
-  const observer = new IntersectionObserver(
-      (entries) => {
-          entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                  entry.target.classList.add("scrolled");
-                  observer.unobserve(entry.target);
-              }
-          });
-      },
-      { threshold: 0.5 }
-  );
-
-  cards.forEach((card) => {
-      observer.observe(card);
-  });
-});
+// Initialize cart item count on page load
+document.addEventListener("DOMContentLoaded", updateCartItemCount);
